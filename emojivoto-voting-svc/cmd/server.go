@@ -80,7 +80,7 @@ func main() {
 	// Catch shutdown
 	go func() {
 		sig := make(chan os.Signal, 1)
-		signal.Notify(sig, syscall.SIGINT, syscall.SIGQUIT)
+		signal.Notify(sig, syscall.SIGINT, syscall.SIGQUIT, syscall.SIGTERM)
 		s := <-sig
 		errs <- fmt.Errorf("caught signal %v", s)
 	}()
