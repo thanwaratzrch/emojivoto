@@ -6,4 +6,7 @@ COPY $svc_name/target/ /usr/local/bin/
 
 # ARG variables arent available for ENTRYPOINT
 ENV SVC_NAME $svc_name
-ENTRYPOINT cd /usr/local/bin && $SVC_NAME
+
+RUN mv /usr/local/bin/$SVC_NAME /usr/local/bin/main
+
+ENTRYPOINT ["/usr/local/bin/main"]
